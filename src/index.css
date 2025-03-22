@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.timeline-container {
+  position: relative;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, theme('colors.sky.400'), transparent);
+}
+
+@media (min-width: 768px) {
+  .timeline-line {
+    left: 200px;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 48px;
+}
+
+@media (min-width: 768px) {
+  .timeline-item {
+    padding-left: 224px;
+  }
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: theme('colors.sky.400');
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .timeline-item::before {
+    left: 196px;
+  }
+}
+
+.timeline-item:hover::before {
+  background: theme('colors.sky.300');
+  box-shadow: 0 0 10px theme('colors.sky.400');
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
